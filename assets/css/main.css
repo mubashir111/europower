@@ -29908,3 +29908,8 @@ a.ui-button:active {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+/* Global Hide for Social Media Icons */
+.rs-theme-social, .offcanvas-social, .rs-footer-social, .rs-contact-social-wrapper {
+    display: none !important;
+}
