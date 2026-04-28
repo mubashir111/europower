@@ -1,0 +1,34 @@
+import os
+import re
+
+base_dir = '/Users/mubashirt/Desktop/industrie-study/industrie.rstheme.com/html'
+
+content_map = {
+    'supply-chain-of-mro-products.html': '''Europower provides a robust Supply Chain of MRO Products specifically designed to support the continuous operations of Middle Eastern industries. We specialize in the rapid delivery of MRO Consumables to minimize downtime in high-stakes environments like the Oil & Gas sector. Our inventory features high-performance Material Handling equipment that ensures safety and efficiency across warehouses and production lines. We are a leading supplier of Truck Hydraulics and Industrial Hydraulics, offering components that withstand the extreme heat of the GCC region. Our range includes high-efficiency Industrial Pumps & Motors sourced from world-class manufacturers for maximum reliability. We provide advanced Automation Control Systems to help businesses transition toward Industry 4.0 and smart manufacturing. Our supply chain includes specialized Lubricants and Chemicals that meet stringent environmental and performance certifications. We understand that "Time is Money" in the industrial sector, which is why we offer optimized logistics for the UAE, KSA, and beyond. Every product is vetted for durability and compliance with international quality standards. We offer tailored procurement solutions for the manufacturing, mining, and energy sectors. Our digital inventory management ensures that critical spares are always in stock when you need them most. From hydraulic seals to complex motor assemblies, we cover every maintenance requirement. Europower bridges the gap between global innovation and local industrial application. We focus on reducing the Total Cost of Ownership (TCO) for our clients through smarter sourcing. Our logistics network ensures seamless door-to-door delivery across Africa, Asia, and Europe. Trust us for consistent quality and technical support in every transaction. We are your partner in maintaining operational excellence and mechanical integrity. Enhance your maintenance strategy with Europower’s reliable MRO supply chain. We deliver the components that keep the world’s most demanding industries moving forward.''',
+    
+    'supply-chain-of-industrial-products.html': '''Our Supply Chain of Industrial Products is built on the pillars of safety, precision, and heavy-duty performance. We supply a comprehensive range of Hand Tools and Power Tools designed for professional use in construction and fabrication. Europower prioritizes worker safety with a full suite of Industrial PPE and Construction PPE that meets global safety ratings. We offer high-precision Measuring and Testing Instruments essential for quality control in engineering projects. Our inventory includes Heavy Duty Rigging Hardware capable of managing massive loads in challenging environments. We provide reliable Pneumatic & Hydraulic Tools that offer high torque and durability for industrial assembly lines. Safety is paramount, and our Safety & Protective Gear is selected to protect your workforce against site-specific hazards. We serve the building, infrastructure, and oilfield sectors with top-tier hardware and equipment. Our supply chain is optimized for the Middle East, ensuring compliance with regional safety regulations and standards. We offer bulk procurement options for large-scale contractors and government projects. Every tool in our catalog is tested for longevity and ergonomic efficiency. We provide the essential hardware that powers the construction booms in Dubai, Riyadh, and Doha. Our logistics team ensures that your site never stops due to a lack of quality equipment. We source from reputable global brands to guarantee the highest level of craftsmanship. Europower is the preferred choice for procurement managers seeking reliability and competitive pricing. We provide the strength and precision required for modern engineering marvels. Protect your team and empower your projects with our premium industrial hardware. From the smallest hand tool to the heaviest rigging gear, we deliver excellence.''',
+    
+    'supply-chain-of-marine-products.html': '''Europower is a dominant force in the Supply Chain of Marine Products, serving major ports and offshore installations globally. We provide certified Marine Handling Gear and Offshore Lifting Equipment designed for the corrosive maritime environment. Our Cargo Handling Gear ensures the safe and swift movement of goods in busy international shipping lanes. We supply a vast array of Ship Parts and Ship Deck Machinery to maintain vessel seaworthiness and operational safety. Our range of heavy-duty Winches and anchoring systems are built to withstand the toughest sea conditions. We specialize in Marine Engine Spares, providing genuine parts to keep your propulsion systems running smoothly. Our inventory includes high-capacity Electric Chain Hoists for efficient shipboard maintenance and cargo movement. We are a key provider of Corrosion Resistant Chain Hoists, essential for long-term durability in high-salinity maritime zones. Every marine product we supply meets IMO standards and international maritime certifications. We support the offshore energy sector with specialized rigging and subsea lifting solutions. Our supply chain is tuned for the urgency of the maritime industry, offering 24/7 logistics support. We bridge the gap between global marine manufacturers and fleet operators in the Arabian Gulf and Far East. From deck to engine room, we provide the components that ensure maritime safety. Our expertise helps reduce vessel turnaround time and prevents costly mechanical failures at sea. Trust Europower for high-quality marine engineering components and seamless logistics. We keep the global maritime industry afloat with precision-engineered solutions. Your fleet deserves the reliability and strength that only Europower can provide. We are the wind in your sails for all maritime procurement needs.'''
+}
+
+for filename, new_text in content_map.items():
+    file_path = os.path.join(base_dir, filename)
+    if os.path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Replace the paragraph content inside rs-service-details-content
+        # Find the <p> tag that follows the title
+        pattern = r'(<h2 class="rs-service-details-title"[^>]*>.*?</h2>\s*<p[^>]*>)(.*?)(</p>)'
+        
+        # Function to replace the content
+        def repl(match):
+            return match.group(1) + '\n                                ' + new_text + '\n                            ' + match.group(3)
+        
+        new_content = re.sub(pattern, repl, content, flags=re.DOTALL)
+        
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+        print(f"Updated {filename}")
+    else:
+        print(f"File not found: {filename}")

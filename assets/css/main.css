@@ -6111,6 +6111,11 @@ html.lenis body {
     padding-inline-start: 25px;
   }
 }
+@media (max-width: 1199px) {
+  .rs-header-one .rs-header-menu .multipage-menu {
+    display: none !important;
+  }
+}
 @media only screen and (max-width: 575px) {
   .rs-header-one .rs-theme-social {
     display: none;
@@ -11042,8 +11047,21 @@ html.lenis body {
 .main-menu .has-mega-menu .title {
   font-weight: 600;
   text-transform: uppercase;
-  pointer-events: none;
+  pointer-events: auto;
   font-size: 15px;
+}
+.main-menu .has-mega-menu .title a,
+.main-menu .has-mega-menu .title a:hover {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  display: inline !important;
+  letter-spacing: inherit !important;
+  background: transparent !important;
+  transform: none !important;
+}
+.main-menu .has-mega-menu .title a.active {
+  color: var(--rs-theme-orange) !important;
 }
 .main-menu .mega-menu {
   background-color: var(--rs-white);
@@ -29913,3 +29931,54 @@ a.ui-button:active {
 .rs-theme-social, .offcanvas-social, .rs-footer-social, .rs-contact-social-wrapper {
     display: none !important;
 }
+
+/* Custom Service Topic Styles */
+.service-topic-link {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.service-topic-link:hover {
+    color: var(--rs-theme-orange) !important;
+    transform: translateX(5px);
+}
+
+#serviceModal .modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+#serviceModal .modal-header {
+    background-color: var(--rs-theme-orange);
+    color: white;
+    border-radius: 15px 15px 0 0;
+    padding: 20px 30px;
+}
+
+#serviceModal .modal-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#serviceModal .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+#serviceModal .modal-body {
+    padding: 40px;
+}
+
+/* Custom Interactive Documentation Links */
+.service-topic-link a:hover {
+    color: #ff5e14 !important;
+    text-decoration: underline !important;
+}
+.mega-menu li a:hover {
+    color: #ff5e14 !important;
+    padding-left: 5px;
+    transition: all 0.3s ease;
+}
+
