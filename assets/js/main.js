@@ -911,7 +911,7 @@ Sidebar Toggle
 
     // Contact Form Activation
     var form = $('#contact-form');
-    var formMessages = $('#form-messages');
+    var formMessages = $('#form-messages, .ajax-response');
     $(form).submit(function (e) {
         e.preventDefault();
         var formData = $(form).serialize();

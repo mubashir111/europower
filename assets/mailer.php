@@ -8,7 +8,8 @@ require 'phpmailer/config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = strip_tags(trim($_POST["name"]));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    $phone = strip_tags(trim($_POST["phone"]));
+    $phone = isset($_POST["phone"]) ? strip_tags(trim($_POST["phone"])) : 'Not provided';
+    $inquiry = isset($_POST["inquiry"]) ? strip_tags(trim($_POST["inquiry"])) : 'General Inquiry';
     $message = trim($_POST["message"]);
 
     if (empty($name) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -37,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p><strong>Name:</strong> $name</p>
         <p><strong>Email:</strong> $email</p>
         <p><strong>Phone:</strong> $phone</p>
+        <p><strong>Inquiry Type:</strong> $inquiry</p>
         <p><strong>Message:</strong><br>$message</p>
     ";
 
