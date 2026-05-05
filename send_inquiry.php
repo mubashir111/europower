@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     $mail->setFrom($smtp_config['email_from'], 'Europower Website');
-    $mail->addAddress('info@europowerintl.com'); // Recipient
+    $mail->addAddress('muba4shir@gmail.com'); // Recipient
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(true);

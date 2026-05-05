@@ -1,6 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 require 'phpmailer/PHPMailerAutoload.php';
 require 'phpmailer/config.php';
@@ -26,9 +24,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Password = $smtp_config['password'];
     $mail->SMTPSecure = 'ssl';
     $mail->Port = $smtp_config['port'];
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
 
     $mail->setFrom($smtp_config['email_from'], 'Europower Website');
-    $mail->addAddress('info@europowerintl.com'); // Recipient
+    $mail->addAddress('muba4shir@gmail.com'); // Recipient
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(true);

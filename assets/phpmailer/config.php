@@ -11,10 +11,10 @@
 
 $smtp_config = array(
     'host' => 'smtp.gmail.com',
-    'username' => 'muba4shir@gmail.com',
+    'username' => 'hydrotechdubai@gmail.com',
     'password' => 'exmb tyma pftv enab',
     'port' => '465',
-    'email_from' => 'muba4shir@gmail.com'
+    'email_from' => 'hydrotechdubai@gmail.com'
 );
 
 
