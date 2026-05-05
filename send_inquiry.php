@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $mail = new PHPMailer;
-    $mail->SMTPDebug = 2;
+    $mail->SMTPDebug = 0;
     $mail->isSMTP();
     $mail->Host = $smtp_config['host'];
     $mail->SMTPAuth = true;
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     $mail->setFrom($smtp_config['email_from'], 'Europower Website');
-    $mail->addAddress('muba4shir@gmail.com'); // Recipient
+    $mail->addAddress('mubashir@teambackoffice.com'); // Recipient
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(true);
