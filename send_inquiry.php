@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $mail = new PHPMailer;
+    $mail->SMTPDebug = 2;
     $mail->isSMTP();
     $mail->Host = $smtp_config['host'];
     $mail->SMTPAuth = true;
@@ -24,6 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Password = $smtp_config['password'];
     $mail->SMTPSecure = 'ssl';
     $mail->Port = $smtp_config['port'];
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
 
     $mail->setFrom($smtp_config['email_from'], 'Europower Website');
     $mail->addAddress('info@europowerintl.com'); // Recipient
