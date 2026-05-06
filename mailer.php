@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Port = $smtp_config['port'];
 
     $mail->setFrom($smtp_config['email_from'], 'Europower Website');
-    $mail->addAddress('info@europowerintl.com'); // Recipient
+    $mail->addAddress('purchase@europowerintl.com'); // Recipient
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(true);

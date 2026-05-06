@@ -6,7 +6,12 @@ require 'assets/phpmailer/config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = strip_tags(trim($_POST["name"]));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    $phone = isset($_POST["phone"]) ? strip_tags(trim($_POST["phone"])) : 'Not provided';
+    $country_code = isset($_POST["country_code"]) ? strip_tags(trim($_POST["country_code"])) : '';
+    $phone_num = isset($_POST["phone"]) ? strip_tags(trim($_POST["phone"])) : '';
+    $phone = trim($country_code . ' ' . $phone_num);
+    if (empty($phone)) {
+        $phone = 'Not provided';
+    }
     $inquiry = isset($_POST["inquiry"]) ? strip_tags(trim($_POST["inquiry"])) : 'General Inquiry';
     $message = trim($_POST["message"]);
 
