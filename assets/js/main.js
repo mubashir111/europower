@@ -914,6 +914,13 @@ Sidebar Toggle
     var formMessages = $('#form-messages, .ajax-response');
     $(form).submit(function (e) {
         e.preventDefault();
+        
+        var submitBtn = $(form).find('button[type="submit"]');
+        var originalBtnText = submitBtn.text();
+        
+        // Disable button and show sending status
+        submitBtn.prop('disabled', true).text('Sending...');
+
         var formData = $(form).serialize();
         $.ajax({
             type: 'POST',
@@ -939,6 +946,10 @@ Sidebar Toggle
                 } else {
                     $(formMessages).text('Oops! An error occurred and your message could not be sent.');
                 }
+            })
+            .always(function () {
+                // Re-enable button and restore original text
+                submitBtn.prop('disabled', false).text(originalBtnText);
             });
     });
 
