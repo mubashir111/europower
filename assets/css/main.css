@@ -10974,11 +10974,11 @@ html.lenis body {
   list-style: none;
 }
 .main-menu li a {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1;
   color: var(--rs-text-primary);
-  padding: 40px 20px;
+  padding: 40px 14px;
   display: flex;
   align-items: center;
   text-transform: capitalize;
